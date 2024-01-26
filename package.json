@@ -4,6 +4,7 @@
   "description": "Social Media App created using MERN Stack and GraphQL API",
   "main": "index.js",
   "scripts": {
+    "serve": "node index",
     "start": "nodemon index"
   },
   "keywords": [],
