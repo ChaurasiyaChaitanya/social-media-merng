@@ -39,7 +39,7 @@ module.exports = {
 
       const passMatch = await bcrypt.compare(password, user.password);
       if (!passMatch) {
-        errors.userErr = "User not found";
+        errors.userErr = "Wrong Password";
         throw new UserInputError("Wrong credentials", { errors });
       }
 
