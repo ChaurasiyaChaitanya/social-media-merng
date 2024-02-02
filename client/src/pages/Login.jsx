@@ -24,8 +24,7 @@ function Login(props) {
       navigate("/");
     },
     onError(err) {
-      // console.log(err.graphQLErrors[0].extensions.errors);
-      // setErrors(err.graphQLErrors[0].extensions.errors);
+      setErrors(err.graphQLErrors[0].extensions.errors);
       alert(err);
     },
     variables: values,

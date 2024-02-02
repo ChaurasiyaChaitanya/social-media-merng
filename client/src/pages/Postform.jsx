@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button, Form } from "semantic-ui-react";
 import gql from "graphql-tag";
 import { useMutation } from "@apollo/client";
@@ -7,6 +8,8 @@ import { useForm } from "../util/hooks";
 import { FETCH_POSTS_QUERY } from "../util/graphql";
 
 function Postform() {
+  const navigate = useNavigate();
+
   const { values, onChange, onSubmit } = useForm(createPostCallback, {
     body: "",
   });
@@ -23,6 +26,7 @@ function Postform() {
         data: [...data.getPosts, result.data.createPost],
       });
       values.body = "";
+      navigate("/");
     },
   });
 
@@ -32,28 +36,30 @@ function Postform() {
 
   return (
     <>
-      <Form onSubmit={onSubmit}>
-        <h2>Create a post:</h2>
-        <Form.Field>
-          <Form.Input
-            placeholder="Enter post body..."
-            name="body"
-            onChange={onChange}
-            value={values.body}
-            error={error ? true : false}
-          />
-          <Button type="submit" color="teal">
-            Submit
-          </Button>
-        </Form.Field>
-      </Form>
-      {error && (
-        <div className="ui error message" style={{ marginBottom: 20 }}>
-          <ul className="list">
-            <li>{error.graphQLErrors[0].message}</li>
-          </ul>
-        </div>
-      )}
+      <div className="form-container">
+        <Form onSubmit={onSubmit}>
+          <h2>Create a post:</h2>
+          <Form.Field>
+            <Form.Input
+              placeholder="Enter post body..."
+              name="body"
+              onChange={onChange}
+              value={values.body}
+              error={error ? true : false}
+            />
+            <Button type="submit" color="blue">
+              Submit
+            </Button>
+          </Form.Field>
+        </Form>
+        {error && (
+          <div className="ui error message" style={{ marginBottom: 20 }}>
+            <ul className="list">
+              <li>{error.graphQLErrors[0].message}</li>
+            </ul>
+          </div>
+        )}
+      </div>
     </>
   );
 }

@@ -8,6 +8,7 @@ import Menubar from "./components/Menubar";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import Postform from "./pages/Postform";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
               <Route exact path="/" Component={Home} />
               <Route exact path="/login" Component={Login} />
               <Route exact path="/register" Component={Register} />
+              <Route exact path="/postform" Component={Postform} />
             </Routes>
           </Container>
         </Router>
