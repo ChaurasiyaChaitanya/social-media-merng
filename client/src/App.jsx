@@ -9,6 +9,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Postform from "./pages/Postform";
+import Singlepost from "./pages/Singlepost";
 
 function App() {
   return (
@@ -18,10 +19,11 @@ function App() {
           <Container>
             <Menubar />
             <Routes>
-              <Route exact path="/" Component={Home} />
-              <Route exact path="/login" Component={Login} />
-              <Route exact path="/register" Component={Register} />
-              <Route exact path="/postform" Component={Postform} />
+              <Route exact path="/" element={<Home />} />
+              <Route exact path="/login" element={<Login />} />
+              <Route exact path="/register" element={<Register />} />
+              <Route exact path="/postform" element={<Postform />} />
+              <Route exact path="/posts/:postId" element={<Singlepost />} />
             </Routes>
           </Container>
         </Router>

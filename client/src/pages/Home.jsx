@@ -1,7 +1,4 @@
-import { useContext } from "react";
 import { useQuery } from "@apollo/react-hooks";
-
-import { AuthContext } from "../context/auth";
 import { Grid, Transition } from "semantic-ui-react";
 import Postcard from "../components/Postcard";
 import { FETCH_POSTS_QUERY } from "../util/graphql";

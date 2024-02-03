@@ -17,7 +17,7 @@ function Menubar() {
     <Menu pointing secondary size="massive" color="blue">
       <Menu.Item
         name="home"
-        active={pathname === "/" ? true : false}
+        active={activeItem === "home"}
         onClick={handleItemClick}
         as={Link}
         to="/"

@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button, Form } from "semantic-ui-react";
 import gql from "graphql-tag";
@@ -20,10 +19,9 @@ function Postform() {
       const data = proxy.readQuery({
         query: FETCH_POSTS_QUERY,
       });
-
       proxy.writeQuery({
         query: FETCH_POSTS_QUERY,
-        data: [...data.getPosts, result.data.createPost],
+        data: { getPosts: [result.data.createPost, ...data.getPosts] },
       });
       values.body = "";
       navigate("/");
